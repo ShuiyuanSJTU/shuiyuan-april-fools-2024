@@ -3,7 +3,7 @@ import { REPLACEMENTS, replaceIcon } from "discourse-common/lib/icon-library";
 
 export default apiInitializer("0.11.1", api => {
   if (!settings.enable_easter_egg) return;
-  
+
   const currentUser = api.getCurrentUser();
   if (!(currentUser && currentUser.groups
     && currentUser.groups.filter(group => group.name === settings.enabled_group_name).length > 0)
@@ -23,7 +23,7 @@ export default apiInitializer("0.11.1", api => {
   });
 
   api.decorateCookedElement((elem) => {
-    if (Math.random() > 0.9) {
+    if (Math.random() > 0.3) {
       return;
     }
     const getTextNodes = (node) => {
@@ -54,7 +54,7 @@ export default apiInitializer("0.11.1", api => {
     };
     const textNodes = getTextNodes(elem);
     textNodes.forEach(node => {
-      node.textContent = randomSwap(node.textContent, 0.5);
+      node.textContent = randomSwap(node.textContent, 0.3);
     });
   },
     { id: "shuiyuan-april-fools-2024", onlyStream: true }
