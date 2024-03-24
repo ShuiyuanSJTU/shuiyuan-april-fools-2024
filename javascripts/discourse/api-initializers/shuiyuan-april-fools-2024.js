@@ -4,6 +4,12 @@ import { REPLACEMENTS, replaceIcon } from "discourse-common/lib/icon-library";
 export default apiInitializer("0.11.1", api => {
   if (!settings.enable_easter_egg) return;
 
+  const today = new Date();
+  const isAprilFoolsDay = today.getMonth() === 3 && today.getDate() === 1;
+  if (isAprilFoolsDay || settings.force_global_easter_egg) {
+    document.body.classList.add("shuiyuan-april-fools-2024-global");
+  }
+
   const currentUser = api.getCurrentUser();
   if (!(currentUser && currentUser.groups
     && currentUser.groups.filter(group => group.name === settings.enabled_group_name).length > 0)
