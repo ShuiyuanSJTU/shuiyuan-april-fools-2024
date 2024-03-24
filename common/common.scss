@@ -1,0 +1,29 @@
+span.user-title{
+    display: none;
+}
+
+div:has(> span.user-title){
+    &::after{
+        @keyframes colorChange {
+            0% { color: red; }
+            50% { color: gold; }
+            100% { color: red; }
+        }
+        content: '年度大会员';
+        display: block;
+        animation: colorChange 5s infinite;
+        font-weight: bold;
+    }
+}
+
+span.link-top-line, h1.header-title{
+    a[data-topic-id*="4"][data-topic-id*="1"]::before{
+        content: '你说的对，但是';
+    }
+}
+
+h1[data-topic-id*="4"][data-topic-id*="1"] .fancy-title{
+    &::before{
+        content: '你说的对，但是';
+    }
+}
