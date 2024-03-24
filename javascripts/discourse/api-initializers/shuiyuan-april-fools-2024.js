@@ -1,4 +1,5 @@
 import { apiInitializer } from "discourse/lib/api";
+import { REPLACEMENTS, replaceIcon } from "discourse-common/lib/icon-library";
 
 export default apiInitializer("0.11.1", api => {
   console.log("hello world from api initializer!");
@@ -49,4 +50,18 @@ export default apiInitializer("0.11.1", api => {
     { id: "shuiyuan-april-fools-2024", onlyStream: true }
   );
 
+  
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  const shuffledIcons = shuffleArray(Object.values(REPLACEMENTS));
+  Object.keys(REPLACEMENTS).forEach((icon, index) => {
+    replaceIcon(icon, shuffledIcons[index]);
+  });
+  
 });
