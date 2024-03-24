@@ -1,11 +1,13 @@
-div.topic-list-content, span.link-top-line, h1.header-title{
-    a[data-topic-id*="4"][data-topic-id*="1"]::before{
-        content: '你说的对，但是';
+body.shuiyuan-april-fools-2024{
+    div.topic-list-content, span.link-top-line, h1.header-title{
+        a[data-topic-id*="4"][data-topic-id*="1"]::before{
+            content: '你说的对，但是';
+        }
     }
-}
 
-h1[data-topic-id*="4"][data-topic-id*="1"] .fancy-title{
-    &::before{
-        content: '你说的对，但是';
+    h1[data-topic-id*="4"][data-topic-id*="1"] .fancy-title{
+        &::before{
+            content: '你说的对，但是';
+        }
     }
 }

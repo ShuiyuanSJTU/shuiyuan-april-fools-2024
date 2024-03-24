@@ -1,19 +1,21 @@
-span.user-title{
-    display: none;
-}
+body.shuiyuan-april-fools-2024{
+    span.user-title{
+        display: none;
+    }
 
-div:has(> span.user-title) > :nth-last-child(2){
-    display: block;
-    &::after{
-        @keyframes colorChange {
-            0% { color: red; }
-            50% { color: gold; }
-            100% { color: red; }
-        }
-        content: '年度大会员';
+    div:has(> span.user-title) > :nth-last-child(2){
         display: block;
-        animation: colorChange 5s infinite;
-        font-weight: bold;
-        font-size: var(--font-0);
+        &::after{
+            @keyframes colorChange {
+                0% { color: red; }
+                50% { color: gold; }
+                100% { color: red; }
+            }
+            content: '年度大会员';
+            display: block;
+            animation: colorChange 5s infinite;
+            font-weight: bold;
+            font-size: var(--font-0);
+        }
     }
 }

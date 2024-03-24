@@ -2,7 +2,15 @@ import { apiInitializer } from "discourse/lib/api";
 import { REPLACEMENTS, replaceIcon } from "discourse-common/lib/icon-library";
 
 export default apiInitializer("0.11.1", api => {
-  console.log("hello world from api initializer!");
+  const currentUser = api.getCurrentUser();
+  if (!(currentUser && currentUser.groups
+    && currentUser.groups.filter(group => group.name === "g_arpil_fools_2024").length > 0)
+  ) {
+    return;
+  }
+
+  document.body.classList.add("shuiyuan-april-fools-2024");
+
   api.reopenWidget("post-avatar", {
     html(attrs) {
       if(Math.random() < 0.3) {
