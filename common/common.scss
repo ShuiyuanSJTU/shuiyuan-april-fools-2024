@@ -11,3 +11,12 @@ body.shuiyuan-april-fools-2024{
         }
     }
 }
+
+body:not(.shuiyuan-april-fools-2024) {
+    .groups-boxes a[data-group-name="#{$enabled_group_name}"]{
+        display: none !important;
+    }
+    li[data-name="#{$enabled_group_name}"]{
+        display: none !important;
+    }
+}

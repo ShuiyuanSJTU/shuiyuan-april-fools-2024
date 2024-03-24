@@ -2,9 +2,11 @@ import { apiInitializer } from "discourse/lib/api";
 import { REPLACEMENTS, replaceIcon } from "discourse-common/lib/icon-library";
 
 export default apiInitializer("0.11.1", api => {
+  if (!settings.enable_easter_egg) return;
+  
   const currentUser = api.getCurrentUser();
   if (!(currentUser && currentUser.groups
-    && currentUser.groups.filter(group => group.name === "g_arpil_fools_2024").length > 0)
+    && currentUser.groups.filter(group => group.name === settings.enabled_group_name).length > 0)
   ) {
     return;
   }

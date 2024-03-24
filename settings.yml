@@ -1,0 +1,12 @@
+enabled_group_name:
+  type: string
+  default: ""
+  description:
+    zh_CN: "为该群组的用户显示彩蛋"
+    en: "Show easter egg for users in this group"
+enable_easter_egg:
+  type: bool
+  default: false
+  description:
+    zh_CN: "启用彩蛋"
+    en: "Enable easter egg"
