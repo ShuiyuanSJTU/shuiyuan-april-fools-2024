@@ -11,7 +11,7 @@ body.shuiyuan-april-fools-2024{
                 50% { color: gold; }
                 100% { color: red; }
             }
-            content: '年度大会员';
+            content: "#{$new_user_title}";
             display: block;
             animation: colorChange 5s infinite;
             font-weight: bold;

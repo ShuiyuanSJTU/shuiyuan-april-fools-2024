@@ -16,3 +16,15 @@ force_global_easter_egg:
   description:
     zh_CN: "强制启用全局彩蛋，即使不是4月1日"
     en: "Force global easter egg"
+global_hint_text:
+  type: string
+  default: "Ctrl+Shift+I"
+  description:
+    zh_CN: "全局彩蛋提示"
+    en: "Easter egg hint"
+new_user_title:
+  type: string
+  default: "SVIP Pro MAX"
+  description:
+    zh_CN: "新的user-title文字"
+    en: "New user-title"

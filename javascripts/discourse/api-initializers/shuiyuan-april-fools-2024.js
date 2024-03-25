@@ -1,5 +1,6 @@
 import { apiInitializer } from "discourse/lib/api";
-import { replaceIcon,REPLACEMENTS } from "discourse-common/lib/icon-library";
+import KeyboardShortcuts from "discourse/lib/keyboard-shortcuts";
+import { replaceIcon, REPLACEMENTS } from "discourse-common/lib/icon-library";
 import { getTextNodes, randomSwap, shuffleArray } from "../lib/utils";
 
 export default apiInitializer("0.11.1", api => {
@@ -9,6 +10,10 @@ export default apiInitializer("0.11.1", api => {
   const isAprilFoolsDay = today.getMonth() === 3 && today.getDate() === 1;
   if (isAprilFoolsDay || settings.force_global_easter_egg) {
     document.body.classList.add("shuiyuan-april-fools-2024-global");
+    KeyboardShortcuts.unbind({
+      "ctrl+shift+i": null,
+      "F12": null,
+    });
   }
 
   const currentUser = api.getCurrentUser();

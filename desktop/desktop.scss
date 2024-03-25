@@ -10,7 +10,7 @@ body.shuiyuan-april-fools-2024{
                 50% { color: gold; }
                 100% { color: red; }
             }
-            content: '年度大会员';
+            content: "#{$new_user_title}";
             display: block;
             animation: colorChange 5s infinite;
             font-weight: bold;
@@ -18,8 +18,22 @@ body.shuiyuan-april-fools-2024{
     }
 }
 
+@keyframes hoverHint {
+    0% {
+      content: inherit;
+    }
+    90% {
+      content: inherit;
+      color: purple;
+    }
+    100% {
+      content: "#{$global_hint_text}";
+      color: inherit;
+    }
+}
+
 $user-titles: 活跃用户, 精品作者, 博物学者, 谈笑风生, 水源团队;
-$user-title-replace: 不活跃用户, 精品读者, 博物学生, 沉默是金, 水源用户;
+$user-title-replace: 不活跃用户, 精品读者, 博物学生, 笑谈生风, 水源用户;
 body.shuiyuan-april-fools-2024-global:not(.shuiyuan-april-fools-2024){
     @each $original, $replace in zip($user-titles, $user-title-replace){
         div:has(> span.user-title.user-title--#{$original}){
@@ -27,6 +41,14 @@ body.shuiyuan-april-fools-2024-global:not(.shuiyuan-april-fools-2024){
             &::after{
                 content: '#{$replace}';
                 font-size: var(--font-0);
+                cursor: help;
+            }
+            &:hover::after{
+                animation-name: hoverHint;
+                animation-delay: 0.5s;
+                animation-duration: 2.5s;
+                animation-iteration-count: 1;
+                animation-fill-mode: backwards;
             }
         }
         span.user-title.user-title--#{$original}{
