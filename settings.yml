@@ -28,3 +28,27 @@ new_user_title:
   description:
     zh_CN: "新的user-title文字"
     en: "New user-title"
+avatar_replace_probability:
+  type: float
+  default: 0.3
+  description:
+    zh_CN: "替换头像的概率"
+    en: "Probability of replacing avatar"
+post_content_shuffle_probability:
+  type: float
+  default: 0.3
+  description:
+    zh_CN: "打乱帖子内容的概率"
+    en: "Probability of shuffling post content"
+post_content_shuffle_pairwise_probability:
+  type: float
+  default: 0.3
+  description:
+    zh_CN: "被打乱帖子中，每一对字符被交换的概率"
+    en: "Probability of swapping each pair of characters in shuffled post content"
+icon_shuffle_probability:
+  type: float
+  default: 0.3
+  description:
+    zh_CN: "打乱图标的概率"
+    en: "Probability of shuffling icons"

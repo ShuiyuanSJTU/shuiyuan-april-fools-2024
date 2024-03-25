@@ -1,7 +1,7 @@
 import { apiInitializer } from "discourse/lib/api";
 import KeyboardShortcuts from "discourse/lib/keyboard-shortcuts";
-import { replaceIcon, REPLACEMENTS } from "discourse-common/lib/icon-library";
-import { getTextNodes, randomSwap, shuffleArray } from "../lib/utils";
+import Icons from "../lib/icons";
+import { getTextNodes, randomSwap } from "../lib/utils";
 
 export default apiInitializer("0.11.1", api => {
   if (!settings.enable_easter_egg) {return;}
@@ -27,7 +27,7 @@ export default apiInitializer("0.11.1", api => {
 
   api.reopenWidget("post-avatar", {
     html(attrs) {
-      if(Math.random() < 0.3) {
+      if(Math.random() < settings.avatar_replace_probability) {
         attrs.avatar_template = api.getCurrentUser().avatar_template;
       }
       return this._super(attrs);
@@ -35,19 +35,25 @@ export default apiInitializer("0.11.1", api => {
   });
 
   api.decorateCookedElement((elem) => {
-    if (Math.random() > 0.3) {
+    if (Math.random() > settings.post_content_shuffle_probability) {
       return;
     }
     const textNodes = getTextNodes(elem);
     textNodes.forEach(node => {
-      node.textContent = randomSwap(node.textContent, 0.3);
+      node.textContent = randomSwap(
+        node.textContent,
+        settings.post_content_shuffle_pairwise_probability);
     });
   },
     { id: "shuiyuan-april-fools-2024", onlyStream: true }
   );
 
-  const shuffledIcons = shuffleArray(Object.values(REPLACEMENTS));
-  Object.keys(REPLACEMENTS).forEach((icon, index) => {
-    replaceIcon(icon, shuffledIcons[index]);
+  api.onPageChange(() => {
+    if (Math.random() < settings.icon_shuffle_probability) {
+      Icons.shuffleIcons();
+    } else {
+      Icons.restoreIcons();
+    }
   });
+
 });
