@@ -1,5 +1,7 @@
 import { apiInitializer } from "discourse/lib/api";
 import KeyboardShortcuts from "discourse/lib/keyboard-shortcuts";
+import discourseLater from "discourse-common/lib/later";
+import { printHint1 } from "../lib/console";
 import Icons from "../lib/icons";
 import { getTextNodes, randomSwap } from "../lib/utils";
 
@@ -14,6 +16,7 @@ export default apiInitializer("0.11.1", api => {
       "ctrl+shift+i": null,
       "F12": null,
     });
+    discourseLater(printHint1, 5000);
   }
 
   const currentUser = api.getCurrentUser();

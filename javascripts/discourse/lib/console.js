@@ -1,3 +1,5 @@
+import I18n from "discourse-i18n";
+
 /* eslint-disable no-console */
 async function getBase64Image(url) {
     const response = await fetch(url);
@@ -29,4 +31,11 @@ async function imageToConsole(url,size = 200) {
         'background-size: contain;'
         ].join(' ');
     console.log('%c ', style);
+}
+
+export async function printHint1() {
+    await imageToConsole(settings.theme_uploads.hint1_image, 50);
+    const groupUrl = new URL(`/g/${settings.enabled_group_name}`, document.location.href);
+    console.log('%c' + I18n.t(themePrefix("hint1_text")) + '\n%c' + groupUrl.href, 'color:lime;background:black;font-size:2em;', 'background:yellow;font-size:1.5em;');
+    // console.log(, 'background:yellow;font-size:1.2em;');
 }
