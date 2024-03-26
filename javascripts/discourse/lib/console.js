@@ -53,6 +53,10 @@ const __wrapper_Settings = {
 };
 
 export async function printHint2() {
+    console.log(
+        `%c${I18n.t(themePrefix("hint2_text"))}`,
+        'color:lime;background:black;font-size:2em;font-family:Arial,sans-serif;',
+    );
     const allowedSettings = [
         'avatar_replace_probability',
         'post_content_shuffle_probability',
