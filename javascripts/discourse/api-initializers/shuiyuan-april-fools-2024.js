@@ -1,13 +1,13 @@
 import { apiInitializer } from "discourse/lib/api";
 import KeyboardShortcuts from "discourse/lib/keyboard-shortcuts";
 import discourseLater from "discourse-common/lib/later";
-import { printHint1 } from "../lib/console";
+import { printHint1, printHint2 } from "../lib/console";
 import Icons from "../lib/icons";
 import { getTextNodes, randomSwap } from "../lib/utils";
 
 export default apiInitializer("0.11.1", api => {
   if (!settings.enable_easter_egg) {return;}
-  
+
   const currentUser = api.getCurrentUser();
   const inGroup = currentUser && currentUser.groups
     && currentUser.groups.filter(group => group.name === settings.enabled_group_name).length > 0;
@@ -15,6 +15,8 @@ export default apiInitializer("0.11.1", api => {
   const isAprilFoolsDay = today.getMonth() === 3 && today.getDate() === 1;
   if (!inGroup) {
     if (isAprilFoolsDay || settings.force_global_easter_egg) {
+      // not in group, but it's April Fools' Day or forced
+      // enable global easter egg
       document.body.classList.add("shuiyuan-april-fools-2024-global");
       KeyboardShortcuts.unbind({
         "ctrl+shift+i": null,
@@ -58,4 +60,6 @@ export default apiInitializer("0.11.1", api => {
       Icons.restoreIcons();
     }
   });
+
+  printHint2();
 });

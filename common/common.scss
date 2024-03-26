@@ -20,3 +20,12 @@ body:not(.shuiyuan-april-fools-2024) {
         display: none !important;
     }
 }
+
+body.shuiyuan-april-fools-2024-{
+    &flip{
+        transform: scaleX(-1);
+    }
+    &invert{
+        filter: invert(1);
+    }
+}

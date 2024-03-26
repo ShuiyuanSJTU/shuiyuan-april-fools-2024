@@ -42,3 +42,58 @@ export async function printHint1() {
         'background:yellow;font-size:1.5em;font-family:Arial,sans-serif;'
     );
 }
+
+// no real implementation, just for pretty print in console
+// 1. use a named function to create object
+//    so that the object will be named in the console
+// 2. use a object to wrap the Settings function
+//    so that the function will not be renamed by terser
+const __wrapper_Settings = {
+    Settings: function() { }
+};
+
+export async function printHint2() {
+    const allowedSettings = [
+        'avatar_replace_probability',
+        'post_content_shuffle_probability',
+        'post_content_shuffle_pairwise_probability',
+        'icon_shuffle_probability'
+    ];
+    // so the object will be named in the console
+    const proxy = new __wrapper_Settings.Settings();
+    for (let setting of allowedSettings) {
+        Object.defineProperty(proxy, setting, {
+            get: () => settings[setting],
+            set: (value) => settings[setting] = value,
+            enumerable: true,
+        });
+    }
+    const specialHints = [
+        "#1 上面是控制概率的参数",
+        "#2 你可以单击它们以查看它们的值",
+        "#3 也可以双击并修改它们的值",
+        "#4 值修改后立刻生效，你可以继续浏览以查看效果",
+        "#5 修改的值将在刷新页面后还原"
+    ];
+    for (let hint of specialHints) {
+        Object.defineProperty(proxy, hint, {
+            get: () => {
+                if (document.body.classList.contains("shuiyuan-april-fools-2024-flip")){
+                    document.body.classList.remove("shuiyuan-april-fools-2024-flip");
+                } else {
+                    document.body.classList.add("shuiyuan-april-fools-2024-flip");
+                }
+                return "喵";
+            },
+            set: () => {
+                if (document.body.classList.contains("shuiyuan-april-fools-2024-invert")){
+                    document.body.classList.remove("shuiyuan-april-fools-2024-invert");
+                } else {
+                    document.body.classList.add("shuiyuan-april-fools-2024-invert");
+                }
+                console.error("不知道该报什么错，但反正这个不能改");
+            },
+        });
+    }
+    console.dir(proxy);
+}
