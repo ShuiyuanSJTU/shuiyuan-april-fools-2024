@@ -8,7 +8,8 @@
   "minimum_discourse_version": null,
   "maximum_discourse_version": null,
   "assets": {
-    "hint1_image": "assets/frieren.webp"
+    "hint1_image": "assets/frieren.webp",
+    "hint2_image": "assets/magic.webp"
   },
   "color_schemes": {
   },

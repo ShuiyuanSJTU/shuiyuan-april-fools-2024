@@ -53,6 +53,7 @@ const __wrapper_Settings = {
 };
 
 export async function printHint2() {
+    await imageToConsole(settings.theme_uploads.hint2_image, 50);
     console.log(
         `%c${I18n.t(themePrefix("hint2_text"))}`,
         'color:lime;background:black;font-size:2em;font-family:Arial,sans-serif;',
