@@ -30,8 +30,8 @@ export default apiInitializer("0.11.1", api => {
 
   api.reopenWidget("post-avatar", {
     html(attrs) {
-      if(Math.random() < settings.avatar_replace_probability) {
-        attrs.avatar_template = api.getCurrentUser().avatar_template;
+      if((attrs.id^currentUser.id)*7%100/100 < settings.avatar_replace_probability) {
+        attrs.avatar_template = currentUser.avatar_template;
       }
       return this._super(attrs);
     }

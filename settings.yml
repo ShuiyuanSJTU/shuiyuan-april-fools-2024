@@ -30,7 +30,7 @@ new_user_title:
     en: "New user-title"
 avatar_replace_probability:
   type: float
-  default: 0.3
+  default: 0.1
   description:
     zh_CN: "替换头像的概率"
     en: "Probability of replacing avatar"
