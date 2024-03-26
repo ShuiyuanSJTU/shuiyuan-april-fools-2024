@@ -32,6 +32,7 @@ export default apiInitializer("0.11.1", api => {
 
   api.reopenWidget("post-avatar", {
     html(attrs) {
+      // eslint-disable-next-line no-bitwise
       if((attrs.id^currentUser.id)*7%100/100 < settings.avatar_replace_probability) {
         attrs.avatar_template = currentUser.avatar_template;
       }
