@@ -24,7 +24,7 @@ global_hint_text:
     en: "Easter egg hint"
 new_user_title:
   type: string
-  default: "SVIP Pro MAX"
+  default: "SVIP"
   description:
     zh_CN: "新的user-title文字"
     en: "New user-title"
