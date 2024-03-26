@@ -36,6 +36,9 @@ async function imageToConsole(url,size = 200) {
 export async function printHint1() {
     await imageToConsole(settings.theme_uploads.hint1_image, 50);
     const groupUrl = new URL(`/g/${settings.enabled_group_name}`, document.location.href);
-    console.log('%c' + I18n.t(themePrefix("hint1_text")) + '\n%c' + groupUrl.href, 'color:lime;background:black;font-size:2em;', 'background:yellow;font-size:1.5em;');
-    // console.log(, 'background:yellow;font-size:1.2em;');
+    console.log(
+        `%c${I18n.t(themePrefix("hint1_text"))}\n%c${groupUrl.href}`,
+        'color:lime;background:black;font-size:2em;font-family:Arial,sans-serif;',
+        'background:yellow;font-size:1.5em;font-family:Arial,sans-serif;'
+    );
 }
