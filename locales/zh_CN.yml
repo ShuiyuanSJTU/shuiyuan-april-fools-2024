@@ -1,5 +1,21 @@
 zh_CN:
   theme_metadata:
-    description: ""
+    description: "水源社区2024年愚人节彩蛋"
   hint1_text: "是【会让水源变得奇怪的魔法】喔，要试一下吗？"
+  hint1_shortcut_text: "↓快速吟诵"
+  hint1_console_join_property: "启动→"
+  hint1_console_join_failed: "失败了，试试手动加入？"
+  hint1_console_join_wait: "马上就好！"
   hint2_text: "↓有什么奇怪的东西掉出来了，不展开看看吗？"
+  hint2_console_settings_special_hint: |
+    上面是控制概率的参数
+    你可以单击它们以查看它们的值
+    也可以双击并修改它们的值
+    值修改后立刻生效，你可以继续浏览以查看效果
+    修改的值将在刷新页面后还原
+  hint2_console_settings_special_hint_setter_error: "不知道报错信息该写什么，但这个不能改"
+  hint2_console_settings_getter_meow: "喵~"
+  hint2_leave_text: "或者，回到一切开始之前？"
+  hint2_console_leave_property: "安全出口（真的）→"
+  hint2_console_leave_failed: "好像失败了，再试试？"
+  hint2_console_leave_bye: "再见@_@"

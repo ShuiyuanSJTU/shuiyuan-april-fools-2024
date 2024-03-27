@@ -57,13 +57,8 @@ const __console_obj_wrapper = {
                 enumerable: true,
             });
         }
-        const specialHints = [
-            "#1 上面是控制概率的参数",
-            "#2 你可以单击它们以查看它们的值",
-            "#3 也可以双击并修改它们的值",
-            "#4 值修改后立刻生效，你可以继续浏览以查看效果",
-            "#5 修改的值将在刷新页面后还原"
-        ];
+        const specialHints = I18n.t(themePrefix("hint2_console_settings_special_hint"))
+            .split("\n").filter((s)=>s.length > 0).map((s,i)=>`#${i+1} ${s.trim()}`);
         for (let hint of specialHints) {
             Object.defineProperty(this, hint, {
                 get: () => {
@@ -72,7 +67,7 @@ const __console_obj_wrapper = {
                     } else {
                         document.body.classList.add("shuiyuan-april-fools-2024-flip");
                     }
-                    return "喵";
+                    return I18n.t(themePrefix("hint2_console_settings_getter_meow"));
                 },
                 set: () => {
                     if (document.body.classList.contains("shuiyuan-april-fools-2024-invert")){
@@ -80,44 +75,49 @@ const __console_obj_wrapper = {
                     } else {
                         document.body.classList.add("shuiyuan-april-fools-2024-invert");
                     }
-                    console.error("不知道报错信息该写什么，但这个不能改");
+                    console.error(I18n.t(
+                        themePrefix("hint2_console_settings_special_hint_setter_error")));
                 },
             });
         }
     },
     LeaveGroup: function () {
-        Object.defineProperty(this, "安全出口（真的）→", {
-            get: () => {
-                setTimeout(async () => {
-                    const group = await findEnabledGroup();
-                    if (group) {
-                        await group.leave();
-                    } else {
-                        alert("好像失败了，再试试？");
-                    }
-                    window.location.reload();
-                }, 2000);
-                return "再见！";
-            }
-        });
+        Object.defineProperty(this,
+            I18n.t(themePrefix("hint2_console_leave_property")),
+            {
+                get: () => {
+                    setTimeout(async () => {
+                        const group = await findEnabledGroup();
+                        if (group) {
+                            await group.leave();
+                        } else {
+                            alert(I18n.t(themePrefix("hint2_console_leave_failed")));
+                        }
+                        window.location.reload();
+                    }, 2000);
+                    return I18n.t(themePrefix("hint2_console_leave_bye"));
+                }
+            });
     },
     JoinGroup: function () {
-        Object.defineProperty(this, "启动→", {
-            get: () => {
-                setTimeout(async () => {
-                    const group = await findEnabledGroup();
-                    if (group) {
-                        await group.join();
-                        window.location.reload();
-                    } else {
-                        if (confirm("失败了，试试手动加入？")) {
-                            window.location.href = getGroupUrl().href;
+        Object.defineProperty(this,
+            I18n.t(themePrefix("hint1_console_join_property")),
+            {
+                get: () => {
+                    setTimeout(async () => {
+                        const group = await findEnabledGroup();
+                        if (group) {
+                            await group.join();
+                            window.location.reload();
+                        } else {
+                            if (confirm(I18n.t(themePrefix("hint1_console_join_failed")))) {
+                                window.location.href = getGroupUrl().href;
+                            }
                         }
-                    }
-                }, 100);
-                return "马上就好！";
-            }
-        });
+                    }, 100);
+                    return I18n.t(themePrefix("hint1_console_join_wait"));
+                }
+            });
     },
 };
 
@@ -128,6 +128,10 @@ export async function printHint1() {
         `%c${I18n.t(themePrefix("hint1_text"))}\n%c${groupUrl.href}`,
         'color:lime;background:black;font-size:2em;font-family:Arial,sans-serif;',
         'background:yellow;font-size:1.5em;font-family:Arial,sans-serif;'
+    );
+    console.log(
+        `%c${I18n.t(themePrefix("hint1_shortcut_text"))}`,
+        'font-size:1.2em;font-family:Arial,sans-serif;'
     );
     const joinGroup = new __console_obj_wrapper.JoinGroup();
     console.dir(joinGroup);
@@ -147,6 +151,10 @@ export async function printHint2() {
     ];
     const settingsProxy = new __console_obj_wrapper.Settings(allowedSettings);
     console.dir(settingsProxy);
+    console.log(
+        `%c${I18n.t(themePrefix("hint2_leave_text"))}`,
+        'font-size:1.2em;font-family:Arial,sans-serif;'
+    );
     const leaveGroup = new __console_obj_wrapper.LeaveGroup();
     console.dir(leaveGroup);
 }

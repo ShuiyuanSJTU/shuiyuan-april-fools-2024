@@ -1,4 +1,21 @@
 en:
   theme_metadata:
-    description: ""
+    description: "Shuiyuan Community 2024 April Fools' Day easter egg"
   hint1_text: "It's a magic that will make shuiyuan strange. Do you want to try it?"
+  hint1_shortcut_text: "↓Quick chant"
+  hint1_console_join_property: "Start→"
+  hint1_console_join_failed: "Failed, try to join manually?"
+  hint1_console_join_wait: "It will be fine soon!"
+  hint2_text: "↓Something strange fell out, why not expand it?"
+  hint2_console_settings_special_hint: |
+    The above are parameters that control the probability
+    You can click on them to see their values
+    You can also double-click and modify their values
+    The modified value takes effect immediately, you can continue browsing to see the effect
+    The modified value will be restored after refreshing the page
+  hint2_console_settings_special_hint_setter_error: "I don't know what error message to write, but this can't be changed"
+  hint2_console_settings_getter_meow: "Meow~"
+  hint2_leave_text: "Or, go back to before everything started?"
+  hint2_console_leave_property: "Safe exit (really)→"
+  hint2_console_leave_failed: "It seems to have failed, try again?"
+  hint2_console_leave_bye: "Goodbye@_@"
