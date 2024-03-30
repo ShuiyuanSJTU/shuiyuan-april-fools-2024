@@ -33,3 +33,7 @@ export function shuffleArray(array) {
     }
     return array;
 };
+
+export async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}

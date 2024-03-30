@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 import Group from "discourse/models/group";
 import I18n from "discourse-i18n";
+import { sleep } from "./utils";
 
 async function findEnabledGroup() {
     return (await Group.findAll()).findBy("name", settings.enabled_group_name);
@@ -139,6 +140,7 @@ export async function printHint1() {
 
 export async function printHint2() {
     await imageToConsole(settings.theme_uploads.hint2_image, 50);
+    await sleep(30000);
     console.log(
         `%c${I18n.t(themePrefix("hint2_text"))}`,
         'color:lime;background:black;font-size:2em;font-family:Arial,sans-serif;',

@@ -61,5 +61,5 @@ export default apiInitializer("0.11.1", api => {
       Icons.restoreIcons();
     }
   });
-  discourseLater(printHint2, 30000);
+  discourseLater(printHint2, 3000);
 });
