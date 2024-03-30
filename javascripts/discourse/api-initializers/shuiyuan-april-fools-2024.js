@@ -13,6 +13,7 @@ export default apiInitializer("0.11.1", api => {
     && currentUser.groups.filter(group => group.name === settings.enabled_group_name).length > 0;
   const today = new Date();
   const isAprilFoolsDay = today.getMonth() === 3 && today.getDate() === 1;
+  const isMobleDevice = api._lookupContainer("service:site").isMobileDevice;
   if (!inGroup) {
     if (isAprilFoolsDay || settings.force_global_easter_egg) {
       // not in group, but it's April Fools' Day or forced
@@ -22,7 +23,7 @@ export default apiInitializer("0.11.1", api => {
         "ctrl+shift+i": null,
         "F12": null,
       });
-      discourseLater(printHint1, 5000);
+      if(!isMobleDevice){ discourseLater(printHint1, 5000); }
     }
     // do nothing if not in group
     return;
@@ -61,5 +62,6 @@ export default apiInitializer("0.11.1", api => {
       Icons.restoreIcons();
     }
   });
-  discourseLater(printHint2, 3000);
+
+  if(!isMobleDevice){ discourseLater(printHint2, 3000); }
 });
